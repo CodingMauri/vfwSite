@@ -31,14 +31,14 @@ const Home = () => {
   };
   return (
     <>
-      <div className="w-full h-full ">
-        <div className="w-full h-1/3 flex justify-center pt-10">
+      <div className="flex w-full h-screen p-10 ">
+        <div className="w-full h-[200px] flex justify-center pt-10 relative">
           <div className="w-[90%] h-[250px]">
-            <Slider>
+            <Slider {...settings} className = "flex w-full  min-h-[250px] " >
               {data.map((image) => (
                 <>
                   <img
-                    className="w-full h-[250px] object-cover rounded "
+                    className=" max-w-full h-auto mx-auto object-fill rounded  "
                     src={image.images}
                     id={image.id}
                     alt="vfw"
@@ -46,10 +46,7 @@ const Home = () => {
                 </>
               ))}
             </Slider>
-          </div>
-        </div>
-
-        <div className="flex w-full h-full p-10">
+        <div className=" flex w-full h-full p-10">
           <div className="w-1/2 h-full  ">
             <div className = "w-full h-full ">
               <h2 className="text-white text-3xl font-Rothwell p-10">
@@ -73,7 +70,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="border-r border-2 border-white mr-12"></div>
+          <div className="border-r border-2 border-white mr-14 bg-red-300"></div>
           <div className="w-1/2 h-full  ">
             <div className = "w-full h-full ">
               <h2 className="text-white text-3xl font-Rothwell p-10">
@@ -98,7 +95,10 @@ const Home = () => {
             </div>
           </div>
         </div>
+        </div>
+          </div>
       </div>
+
     </>
   );
 };
