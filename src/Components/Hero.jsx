@@ -1,14 +1,40 @@
 import React from "react";
 import vfwlogo from "../assets/Images/VFW-logo-footer.png";
 import vfwimage from "../assets/Images/vfw-1.jpeg";
-import Nav from "./Nav";
-import Home from "./Home"
+import classNames from "classnames";
 
-const Hero = () => {
+import Nav from "./Nav";
+import Home from "./Home";
+
+const Hero = ({isMobile}) => {
+  // const [setIsMobileView, isMobileView] = useState(false)
+
+  // const [isMobile, setIsMobile] = useState(false);
+
+  // useEffect(() => {
+  //   const handleMobileView = () => {
+  //     setIsMobile(window.innerWidth <= 768);
+  //   };
+
+  //   //Listening for window resize events
+  //   window.addEventListener("resize", handleMobileView);
+
+  //   return () => {
+  //     window.removeEventListener("resize", handleMobileView);
+  //   };
+  // });
+
   return (
     <>
       <div className="w-full h-screen items-center bg-red-500 flex relative">
-        <div className=" absolute w-screen h-screen bg-gradient-to-r from-black via-black to-transparent z-10 " />
+        <div
+          className={classNames(
+            " absolute w-screen h-screen z-10 ",
+            isMobile
+              ? " bg-gradient-to-t from-black  to-transparent"
+              : "bg-gradient-to-r from-black via-black to-transparent"
+          )}
+        />
         <div className="absolute h-screen w-screen z-0">
           <img
             className="w-full h-full object-cover"
@@ -17,7 +43,7 @@ const Hero = () => {
           />
         </div>
 
-        <div className="flex flex-col w-1/2 justify-start p-10 z-10 ">
+        <div className={classNames("flex flex-col justify-start p-10 z-10 ", isMobile ? "w-full" : "w-1/2")}>
           <img
             src={vfwlogo}
             className=" w-[350px] object-contain h-[200px]"
@@ -25,8 +51,19 @@ const Hero = () => {
           />
 
           <div className="w-full leading-6">
-            <h1 className="text-white font-Rothwell text-3xl">Post 9601</h1>
-            <p className="text-white md:text-sm sm:text-xs font-serif pt-1">
+            <h1
+              className={classNames(
+                "text-white font-Rothwell",
+                isMobile ? "text-xl" : "text-3xl"
+              )}
+            >
+              Post 9601
+            </h1>
+            <p
+              className={classNames(
+                "text-white font-serif pt-1", isMobile ? "text-xs" : "text-sm"
+              )}
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
               enim nunc faucibus a pellentesque sit amet porttitor eget.
@@ -44,11 +81,11 @@ const Hero = () => {
             </p>
           </div>
         </div>
-      <div className =  "absolute bottom-0 w-full">
+        <div className="absolute bottom-0 w-full">
           <Nav />
+        </div>
       </div>
-      </div>
-      <Home />
+      <Home isMobile={isMobile }/>
     </>
   );
 };
