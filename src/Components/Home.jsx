@@ -33,12 +33,12 @@ const Home = ({ isMobile }) => {
       <div className="w-full h-full ">
         {/* Slider Container Start */}
         <div className="w-full h-1/3 flex justify-center pt-10">
-          <div className="w-[90%] h-[250px]">
+          <div className="w-[90%] h-[250px] p-7 mb-9">
             <Slider {...settings}>
               {data.map((image) => (
                 <>
                   <img
-                    className=" max-w-full h-auto mx-auto object-fill rounded  "
+                    className=" w-full h-[279px] mx-auto object-cover rounded  "
                     src={image.images}
                     id={image.id}
                     alt="vfw"
