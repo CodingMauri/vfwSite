@@ -5,24 +5,22 @@ import classNames from "classnames";
 
 import Nav from "./Nav";
 import Home from "./Home";
+import useFetch from "./hooks/useFetch";
 
 const Hero = ({isMobile}) => {
-  // const [setIsMobileView, isMobileView] = useState(false)
+  
 
-  // const [isMobile, setIsMobile] = useState(false);
+  //Making the Call to the backend strapi database
 
-  // useEffect(() => {
-  //   const handleMobileView = () => {
-  //     setIsMobile(window.innerWidth <= 768);
-  //   };
+  const apiKey = process.env.REACT_APP_STRAPI_KEY;
 
-  //   //Listening for window resize events
-  //   window.addEventListener("resize", handleMobileView);
+  const api = `https://localhost:1337/about-description`
 
-  //   return () => {
-  //     window.removeEventListener("resize", handleMobileView);
-  //   };
-  // });
+  const {loading,data} = useFetch(api)
+
+  console.log(data)
+
+
 
   return (
     <>

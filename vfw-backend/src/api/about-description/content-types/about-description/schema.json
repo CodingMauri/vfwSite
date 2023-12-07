@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_descriptions",
+  "info": {
+    "singularName": "about-description",
+    "pluralName": "about-descriptions",
+    "displayName": "about-description"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
