@@ -677,30 +677,66 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiAboutDescriptionAboutDescription
-  extends Schema.CollectionType {
-  collectionName: 'about_descriptions';
+export interface ApiAboutAbout extends Schema.CollectionType {
+  collectionName: 'abouts';
   info: {
-    singularName: 'about-description';
-    pluralName: 'about-descriptions';
-    displayName: 'about-description';
+    singularName: 'about';
+    pluralName: 'abouts';
+    displayName: 'about';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    description: Attribute.RichText;
+    about: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::about-description.about-description',
+      'api::about.about',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::about-description.about-description',
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCommandersMessageCommandersMessage
+  extends Schema.CollectionType {
+  collectionName: 'commanders_messages';
+  info: {
+    singularName: 'commanders-message';
+    pluralName: 'commanders-messages';
+    displayName: 'commanders-message';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    message: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::commanders-message.commanders-message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::commanders-message.commanders-message',
       'oneToOne',
       'admin::user'
     > &
@@ -738,6 +774,37 @@ export interface ApiEventEvent extends Schema.CollectionType {
   };
 }
 
+export interface ApiMemorialDescriptionMemorialDescription
+  extends Schema.CollectionType {
+  collectionName: 'memorial_descriptions';
+  info: {
+    singularName: 'memorial-description';
+    pluralName: 'memorial-descriptions';
+    displayName: 'memorial-description';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::memorial-description.memorial-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::memorial-description.memorial-description',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -754,8 +821,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::about-description.about-description': ApiAboutDescriptionAboutDescription;
+      'api::about.about': ApiAboutAbout;
+      'api::commanders-message.commanders-message': ApiCommandersMessageCommandersMessage;
       'api::event.event': ApiEventEvent;
+      'api::memorial-description.memorial-description': ApiMemorialDescriptionMemorialDescription;
     }
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import vfwlogo from "../assets/Images/VFW-logo-footer.png";
 import vfwimage from "../assets/Images/vfw-1.jpeg";
 import classNames from "classnames";
@@ -12,14 +12,19 @@ const Hero = ({isMobile}) => {
 
   //Making the Call to the backend strapi database
 
-  const apiKey = process.env.REACT_APP_STRAPI_KEY;
+  // const apiKey = process.env.REACT_APP_STRAPI_KEY;
 
-  const api = `https://localhost:1337/about-description`
-
-  const {loading,data} = useFetch(api)
+  const endpoints = ["events", "abouts", "commanders-messages", ]
+  
+  const {loading,data} = useFetch(endpoints)
 
   console.log(data)
+  
 
+
+
+  if (loading) return <p>Loading...</p>
+  //Adjusting for a seperate branch
 
 
   return (
@@ -62,28 +67,13 @@ const Hero = ({isMobile}) => {
                 "text-white font-serif pt-1", isMobile ? "text-xs" : "text-sm"
               )}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
-              enim nunc faucibus a pellentesque sit amet porttitor eget.
-              Vehicula ipsum a arcu cursus vitae congue mauris. Bibendum neque
-              egestas congue quisque egestas. Ac tortor dignissim convallis
-              aenean et tortor at risus viverra. Adipiscing enim eu turpis
-              egestas pretium aenean. Enim diam vulputate ut pharetra sit amet
-              aliquam id diam. Ornare suspendisse sed nisi lacus sed viverra
-              tellus. Lorem ipsum dolor sit amet consectetur adipiscing. Magna
-              ac placerat vestibulum lectus mauris ultrices. Hendrerit gravida
-              rutrum quisque non tellus orci ac. Massa massa ultricies mi quis
-              hendrerit dolor magna eget est. Cursus eget nunc scelerisque
-              viverra mauris in. Sapien pellentesque habitant morbi tristique
-              senectus et.
+            {data[1].about}
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 w-full">
-          <Nav />
-        </div>
+      
       </div>
-      <Home isMobile={isMobile }/>
+      <Home isMobile={isMobile } data = {data}/>
     </>
   );
 };

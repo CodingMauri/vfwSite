@@ -25,6 +25,7 @@ function App() {
   return (
 
     <div className='bg-black top-0 overflow-x-hidden'>
+      <Nav  isMobile = {isMobile} />
     <Routes>
       <Route path = "/" element = {<Home isMobile = {isMobile} />} />
       <Route path = '/memorial' element = {<Memorial isMobile = {isMobile} />} />
