@@ -1,11 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { stack  as Menu } from "react-burger-menu";
-const Nav = ({ isMobile }) => {
-  const [isOpen, setIsOpen] = useState(true);
+import { stack as Menu } from "react-burger-menu";
+import classNames from "classnames";
+import vfwLogo from "../assets/Images/VFW-logo-footer.png";
 
-  const handleToggle = () => {
+const Nav = ({ isMobile }) => {
+  const [opacity, setOpacity] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset;
+    setOpacity(scrollTop > 10 ? 1 : 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Ensure to add an empty dependency array to run the effect only once
+
+  const navbarStyle = {
+    backgroundColor: `rgba(0,0,0, ${opacity})`,
   };
 
   var styles = {
@@ -15,7 +35,7 @@ const Nav = ({ isMobile }) => {
       height: "30px",
       left: "36px",
       top: "36px",
-      zIndex:100
+      zIndex: 100,
     },
     bmBurgerBars: {
       background: "#ffffff",
@@ -57,14 +77,20 @@ const Nav = ({ isMobile }) => {
   return (
     <>
       {isMobile ? (
-        <div className=" fixed z-50 top-0 right-0 ">
-          <Menu   right styles={styles} >
+        <div className="fixed z-50 top-0 right-0">
+          <Menu right isOpen={isOpen} menuClicked={toggleMenu} styles={styles}>
             <div>
-              <NavLink to = "/" className = "text-white font-Libel text-2xl">Home</NavLink>
+              <NavLink
+                to="/"
+                onClick={toggleMenu}
+                className="text-white font-Libel text-2xl"
+              >
+                Home
+              </NavLink>
               <NavLink>
                 <h2 className="text-white  font-Libel text-2xl ">Events</h2>
               </NavLink>
-              <NavLink isOpen = {false} to="/memorial">
+              <NavLink onClick={toggleMenu} to="/memorial">
                 <h2 className="text-white font-Libel text-2xl ">Memorial</h2>
               </NavLink>
               <NavLink>
@@ -77,21 +103,37 @@ const Nav = ({ isMobile }) => {
         </div>
       ) : (
         <>
-        <div className = "w-full absolute bottom-0 h-[100px]">
-
-          <div className="sticky  w-full h-[100px] flex justify-evenly z-40  mx-auto">
-          <NavLink to = "/" className = "text-white font-Libel text-2xl">Home</NavLink>
-            <NavLink>
-              <h2 className="text-white  font-Libel text-2xl ">Events</h2>
-            </NavLink>
-            <NavLink to="/memorial">
-              <h2 className="text-white font-Libel text-2xl ">Memorial</h2>
-            </NavLink>
-            <NavLink>
-              <h2 className="text-white font-Libel text-2xl ">Brick Locator</h2>
-            </NavLink>
+          <div
+            className="w-full fixed z-30 ease-in-out duration-300 h-[100px] pt-5"
+            style={navbarStyle}
+          >
+            <div className="w-full h-[100px] flex justify-evenly mx-auto">
+              <div className="w-1/2">
+                <img
+                  className={classNames(
+                    "h-11",
+                    opacity > 0 ? "opacity-1" : "opacity-0"
+                  )}
+                  src={vfwLogo}
+                  alt="logo"
+                ></img>
+              </div>
+              <NavLink to="/" className="text-white font-Libel text-2xl">
+                Home
+              </NavLink>
+              <NavLink>
+                <h2 className="text-white  font-Libel text-2xl ">Events</h2>
+              </NavLink>
+              <NavLink to="/memorial">
+                <h2 className="text-white font-Libel text-2xl ">Memorial</h2>
+              </NavLink>
+              <NavLink>
+                <h2 className="text-white font-Libel text-2xl ">
+                  Brick Locator
+                </h2>
+              </NavLink>
+            </div>
           </div>
-        </div>
         </>
       )}
     </>

@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import classNames from "classnames";
 import vfwimage from "../assets/Images/vfw-1.jpeg";
+import ReactMarkdown from "react-markdown";
 const Home = ({ isMobile, data }) => {
+  const [carousel, setCarousel] = useState([]);
+  useEffect(() => {
+    const getCarouselImages = async () => {
+      await axios
+        .get("http://localhost:1337/api/events?populate[0]=carousel")
+        .then((res) => setCarousel(res.data.data[0].attributes.carousel.data))
+        .catch((err) => console.log(err));
+    };
+
+    getCarouselImages();
+  },[]);
+
+
   const images = [
     {
       id: 1,
@@ -36,11 +51,11 @@ const Home = ({ isMobile, data }) => {
         <div className="w-full h-1/3 flex justify-center pt-10">
           <div className="w-[90%] h-[250px] p-7 mb-9">
             <Slider {...settings}>
-              {images.map((image) => (
+              {carousel.map((image) => (
                 <>
                   <img
                     className=" w-full h-[279px] mx-auto object-cover rounded  "
-                    src={image.images}
+                    src={`http://localhost:1337${image.attributes.url}`}
                     key={image.id}
                     alt="vfw"
                   ></img>
@@ -71,10 +86,8 @@ const Home = ({ isMobile, data }) => {
               >
                 Upcoming Events
               </h2>
-              <div className=" w-[90%] leading-4 p-6 ">
-                <p className="text-white text-sm">
-                  {data ? <div>{data[0].event}</div> : null}
-                </p>
+              <div className=" w-[90%] leading-6 p-6 text-white text-sm ">
+                <ReactMarkdown>{data ? data[0].event : ""}</ReactMarkdown>
               </div>
               <div
                 className={classNames(
@@ -105,8 +118,8 @@ const Home = ({ isMobile, data }) => {
               >
                 Commanders Message
               </h2>
-              <div className="w-[80%] leading-4 p-6 ">
-                <p className="text-white text-sm">{data ? <>{data[2].message}</> : null}</p>
+              <div className="w-[80%] leading-6 p-6 text-white text-sm ">
+                <ReactMarkdown>{data ? data[1].message : null}</ReactMarkdown>
               </div>
             </div>
           </div>

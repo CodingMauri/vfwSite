@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "events",
+  "collectionName": "landing_pages",
   "info": {
-    "singularName": "event",
-    "pluralName": "events",
-    "displayName": "event",
+    "singularName": "landing-page",
+    "pluralName": "landing-pages",
+    "displayName": "landing-page",
     "description": ""
   },
   "options": {
@@ -12,12 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "event": {
+    "description": {
       "type": "richtext"
     },
-    "carousel": {
+    "image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "allowedTypes": [
         "images"
