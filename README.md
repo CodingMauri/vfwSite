@@ -4,6 +4,11 @@
 
 I undertook a freelance web development project for a client seeking to revamp their online presence by merging two existing websites into a unified platform. The goal was to create a modern and user-friendly website that seamlessly integrated content for both their post and local memorial sites.
 
+## Wireframes
+<img width="826" alt="image" src="https://github.com/CodingMauri/vfwSite/assets/106369465/2792347a-43f2-4e39-b32c-c64d54f62d4b">
+
+
+
 ## Objectives
 
 1. **Unified Online Presence:** The client aimed to consolidate their online presence by merging two separate websites, one dedicated to their post and the other to the local memorial site.
