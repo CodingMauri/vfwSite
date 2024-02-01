@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Project: Veterans of Foreign Wars Post 9601 Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+I undertook a freelance web development project for a client seeking to revamp their online presence by merging two existing websites into a unified platform. The goal was to create a modern and user-friendly website that seamlessly integrated content for both their post and local memorial sites.
 
-In the project directory, you can run:
+## Objectives
 
-### `npm start`
+1. **Unified Online Presence:** The client aimed to consolidate their online presence by merging two separate websites, one dedicated to their post and the other to the local memorial site.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **User-Friendly Design:** The primary objective was to deliver a user-friendly website with an intuitive interface, ensuring a positive experience for visitors exploring both the post and memorial content.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Content Management:** The client required the ability to independently manage and update site content. To achieve this, I implemented a headless CMS using Strapi, empowering them to make real-time updates without technical assistance.
 
-### `npm test`
+4. **Technological Stack:**
+   - **Frontend:** Developed using React for dynamic and responsive user interfaces, complemented by the styling power of Tailwind CSS.
+   - **Backend:** Implemented Strapi as a headless CMS, providing a robust content management solution for the client's needs.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contributions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Web Development:** Spearheaded the end-to-end development of the website, ensuring a seamless merging of content from both the post and memorial sites.
+- **Frontend Technologies:** Leveraged React and Tailwind CSS to create an engaging and visually appealing user interface.
+- **Content Management:** Implemented a headless CMS with Strapi, empowering the client to take control of content updates without relying on external support.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Outcome
 
-### `npm run eject`
+Despite the decision to opt for a different developer due to budget considerations, the project stands as a testament to my skills in web development, user interface design, and strategic content management solutions.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The project repository, hosted on GitHub, includes wireframes, code documentation, and a detailed README to showcase the project's potential and the client's vision for a unified online presence.
