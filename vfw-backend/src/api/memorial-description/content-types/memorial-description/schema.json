@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "about_descriptions",
+  "collectionName": "memorial_descriptions",
   "info": {
-    "singularName": "about-description",
-    "pluralName": "about-descriptions",
-    "displayName": "about-description"
+    "singularName": "memorial-description",
+    "pluralName": "memorial-descriptions",
+    "displayName": "memorial-description"
   },
   "options": {
     "draftAndPublish": true

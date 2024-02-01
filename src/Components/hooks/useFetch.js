@@ -1,31 +1,40 @@
-import  { useState, useEffect } from "react";
+// useFetch.js
+import { useState, useEffect, } from "react";
 import axios from "axios";
 
-const useFetch = (api) => {
+const useFetch = (endpoints) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
+    const fetchData = async () => {
       setLoading(true);
 
-      await axios
-        .get(api)
-        .then((res) => {
-          setData(res.data.results);
+      try {
+        // Use Promise.all to fetch data from multiple endpoints concurrently
+        const responses = await Promise.all(
+          endpoints.map((endpoint) => axios.get(`http://localhost:1337/api/${endpoint}`))
+        );
 
-          setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false);
-          console.log("error getting data:", console.log(err));
-        });
+        // Extract data from each response
+        const responseData = responses.map((response) => response.data.data[0].attributes);
+
+        // Concatenate the results
+        setData(responseData);
+
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.error("Error getting data:", error);
+      }
     };
 
-    getData();
-  }, [api]);
+    fetchData();
+  },[]);
 
   return { loading, data };
 };
 
 export default useFetch;
+
+

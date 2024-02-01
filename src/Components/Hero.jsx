@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import vfwlogo from "../assets/Images/VFW-logo-footer.png";
 import vfwimage from "../assets/Images/vfw-1.jpeg";
 import classNames from "classnames";
-
-import Nav from "./Nav";
+import { motion } from "framer-motion";
 import Home from "./Home";
-import useFetch from "./hooks/useFetch";
 
-const Hero = ({isMobile}) => {
-  
-
+const Hero = ({ isMobile, data, loading }) => {
   //Making the Call to the backend strapi database
 
-  const apiKey = process.env.REACT_APP_STRAPI_KEY;
+  // const apiKey = process.env.REACT_APP_STRAPI_KEY;
 
-  const api = `https://localhost:1337/about-description`
+  const api = `http://localhost:1337/api/landing-pages?populate[0]=image`;
 
-  const {loading,data} = useFetch(api)
+  const [heroImage, setHeroImage] = useState("");
+  useEffect(() => {
+    const getHeroImage = async () => {
+      await axios
+        .get(api)
+        .then((res) => setHeroImage(res.data.data[0].attributes.image.data.attributes))
+        .catch((err) => console.log(err));
+    };
 
-  console.log(data)
+    getHeroImage();
+  }, []);
 
+  console.log(heroImage);
 
+  if (loading) return <p>Loading...</p>;
+  //Adjusting for a seperate branch
+
+  //Variant for animation
+
+  const slideIn = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+
+      x: 0,
+      transition: {
+        duration: 1.5,
+      },
+    },
+  };
 
   return (
     <>
@@ -36,13 +58,21 @@ const Hero = ({isMobile}) => {
         <div className="absolute h-screen w-screen z-0">
           <img
             className="w-full h-full object-cover"
-            src={vfwimage}
+            src={`http://localhost:1337${heroImage.url}`}
             alt="vfw"
           />
         </div>
 
-        <div className={classNames("flex flex-col justify-start p-10 z-10 ", isMobile ? "w-full" : "w-1/2")}>
-          <img
+        <div
+          className={classNames(
+            "flex flex-col justify-start p-10 z-10 ",
+            isMobile ? "w-full" : "w-1/2"
+          )}
+        >
+          <motion.img
+            variants={slideIn}
+            initial="hidden"
+            animate="visible"
             src={vfwlogo}
             className=" w-[350px] object-contain h-[200px]"
             alt="vfwlogo"
@@ -59,31 +89,16 @@ const Hero = ({isMobile}) => {
             </h1>
             <p
               className={classNames(
-                "text-white font-serif pt-1", isMobile ? "text-xs" : "text-sm"
+                "text-white font-serif pt-1",
+                isMobile ? "text-xs" : "text-sm"
               )}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
-              enim nunc faucibus a pellentesque sit amet porttitor eget.
-              Vehicula ipsum a arcu cursus vitae congue mauris. Bibendum neque
-              egestas congue quisque egestas. Ac tortor dignissim convallis
-              aenean et tortor at risus viverra. Adipiscing enim eu turpis
-              egestas pretium aenean. Enim diam vulputate ut pharetra sit amet
-              aliquam id diam. Ornare suspendisse sed nisi lacus sed viverra
-              tellus. Lorem ipsum dolor sit amet consectetur adipiscing. Magna
-              ac placerat vestibulum lectus mauris ultrices. Hendrerit gravida
-              rutrum quisque non tellus orci ac. Massa massa ultricies mi quis
-              hendrerit dolor magna eget est. Cursus eget nunc scelerisque
-              viverra mauris in. Sapien pellentesque habitant morbi tristique
-              senectus et.
+              {data[2].description}
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 w-full">
-          <Nav />
-        </div>
       </div>
-      <Home isMobile={isMobile }/>
+      <Home isMobile={isMobile} data={data} />
     </>
   );
 };

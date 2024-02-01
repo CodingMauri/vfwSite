@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "commanders_messages",
+  "info": {
+    "singularName": "commanders-message",
+    "pluralName": "commanders-messages",
+    "displayName": "commanders-message",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "message": {
+      "type": "richtext"
+    }
+  }
+}
