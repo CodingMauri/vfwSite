@@ -41,9 +41,9 @@ This approach not only addressed the specific needs of the client demographic bu
 
 
 
-<img width="480" alt="Screenshot 2024-02-01 at 3 06 34 AM" src="https://github.com/CodingMauri/vfwSite/assets/106369465/971462ce-d50e-4672-b02b-a480fec2e27c"> 
-<img width="480" alt="Screenshot 2024-02-01 at 3 06 27 AM" src="https://github.com/CodingMauri/vfwSite/assets/106369465/e7e11e63-0f45-4358-8efa-70b850a043fc">
-<img width="480" alt="Screenshot 2024-02-01 at 3 06 14 AM" src="https://github.com/CodingMauri/vfwSite/assets/106369465/84500087-7ac0-4b14-ab67-aaf1b53eae2b">
+<img width="1440" alt="Screenshot 2024-02-01 at 3 06 34 AM" src="https://github.com/CodingMauri/vfwSite/assets/106369465/971462ce-d50e-4672-b02b-a480fec2e27c"> 
+<img width="1440" alt="Screenshot 2024-02-01 at 3 06 27 AM" src="https://github.com/CodingMauri/vfwSite/assets/106369465/e7e11e63-0f45-4358-8efa-70b850a043fc">
+<img width="1440" alt="Screenshot 2024-02-01 at 3 06 14 AM" src="https://github.com/CodingMauri/vfwSite/assets/106369465/84500087-7ac0-4b14-ab67-aaf1b53eae2b">
 
 
 
